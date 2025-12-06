@@ -1,0 +1,59 @@
+header {
+    text-align: center;
+    padding: 0.2rem;
+    color: #37353E;
+    
+}
+
+input[type="text"] {
+    background-color: #d2dcb6;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #37353E;
+    border: 1px;
+}
+
+input.correct {
+    background-color: #a8e6cf;
+    border: 2px solid #2d6a4f;
+}
+
+input.incorrect {
+    background-color: #ffcccb;
+    border: 2px solid #b22222;
+}
+
+body {
+    background: #d2dcb6;
+    font-family: sans-serif;
+    padding: 0.5rem;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: #435663;
+
+}
+
+.conteiner {
+    background: #a1bc98;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+}
+
+.hiragana {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 0.6rem;
+    padding: 0.5rem;
+    border: 1px solid;
+    border-radius: 1px;
+    border-color: #435663;
+}
+
+.kana {
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 25px;
+}
