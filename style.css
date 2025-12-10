@@ -1,44 +1,57 @@
 header {
     text-align: center;
+    font-weight: bold;
     padding: 0.2rem;
-    color: #37353E;
-    
+    color: #594248;   
 }
 
 input[type="text"] {
-    background-color: #d2dcb6;
+    background-color: #f7eff1;
     font-family: sans-serif;
     font-weight: bold;
     color: #37353E;
-    border: 1px;
+    border: 2px solid;
 }
 
 input.correct {
-    background-color: #a8e6cf;
-    border: 2px solid #2d6a4f;
+    background-color: #f1f8e9;
+    border: 2px solid #33691e;
+}
+
+.hiragana.correct {
+    background-color: #a3bf9f;
+    border: 2px solid #556b2f;
+    transition: background-color 0.3s ease;
 }
 
 input.incorrect {
-    background-color: #ffcccb;
-    border: 2px solid #b22222;
+    background-color: #ffebee;
+    border: 2px solid #e57373;
+}
+
+.hiragana.incorrect {
+    background-color: #e6a39d;
+    border: 2px solid #dd6a6a; 
+    transition: background-color 0.3s ease;
 }
 
 body {
-    background: #d2dcb6;
+    background: #8c7b7d;
     font-family: sans-serif;
     padding: 0.5rem;
     justify-content: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: #435663;
+    color: #2d2627;
 
 }
 
 .conteiner {
-    background: #a1bc98;
+    background: #e2ced1;
     padding: 0.8rem;
-    border-radius: 0.5rem;
+    border-radius: 0.8rem;
+    border: 2px solid #d9c4c9;
 }
 
 .hiragana {
@@ -47,7 +60,7 @@ body {
     gap: 0.7rem;
     margin-bottom: 0.6rem;
     padding: 0.5rem;
-    border: 1px solid;
+    border: 2px solid;
     border-radius: 1px;
     border-color: #435663;
 }

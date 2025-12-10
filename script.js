@@ -12,25 +12,43 @@ const respostas = {
 };
 
 const inputs = document.querySelectorAll('.hiragana input');
+let score = 0;
 
 inputs.forEach(input => {
-    input.addEventListener('input', (event) => {
+    input.addEventListener('change', (event) => {
         const userGuess = event.target.value.trim().toLowerCase();
         
         // kana class é irmã (sibling) do input.
         const kanaDiv = input.previousElementSibling; 
         const kanaChar = kanaDiv.innerText;
-
+        const hiraganaBlock = input.parentElement;
         const correctAnswer = respostas[kanaChar];
 
-        if (userGuess === '') input.classList.remove('correct', 'incorrect');
+        const estavaCorreto = hiraganaBlock.classList.contains('correct');
+        const corretoAgora = userGuess === correctAnswer;
+
+        if (corretoAgora && !estavaCorreto) score++;
+        else if (!corretoAgora && estavaCorreto) score--;
+
+        console.log(score);
+
+        if (userGuess === '') {
+            input.classList.remove('correct', 'incorrect');
+            hiraganaBlock.classList.remove('correct', 'incorrect');
+        }
         else if (userGuess === correctAnswer) {
             input.classList.add('correct');
             input.classList.remove('incorrect');
+
+            hiraganaBlock.classList.add('correct');
+            hiraganaBlock.classList.remove('incorrect');
         } 
         else {
             input.classList.add('incorrect');
             input.classList.remove('correct');
+
+            hiraganaBlock.classList.add('incorrect');
+            hiraganaBlock.classList.remove('correct');
         }
     });
 });
