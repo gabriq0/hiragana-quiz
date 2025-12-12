@@ -1,4 +1,4 @@
-const respostas = {
+const answers = {
     'あ': 'a', 'い': 'i', 'う': 'u', 'え': 'e', 'お': 'o',
     'か': 'ka', 'き': 'ki', 'く': 'ku', 'け': 'ke', 'こ': 'ko',
     'さ': 'sa', 'し': 'shi', 'す': 'su', 'せ': 'se', 'そ': 'so',
@@ -11,26 +11,19 @@ const respostas = {
     'わ': 'wa', 'を': 'wo', 'ん': 'n'
 };
 
-const inputs = document.querySelectorAll('.hiragana input');
 let score = 0;
+const inputs = document.querySelectorAll('.hiragana input');
+const displayScore = document.getElementById('score');
 
 inputs.forEach(input => {
     input.addEventListener('change', (event) => {
         const userGuess = event.target.value.trim().toLowerCase();
         
-        // kana class é irmã (sibling) do input.
+        // kana class is input's sibling.
         const kanaDiv = input.previousElementSibling; 
         const kanaChar = kanaDiv.innerText;
         const hiraganaBlock = input.parentElement;
-        const correctAnswer = respostas[kanaChar];
-
-        const estavaCorreto = hiraganaBlock.classList.contains('correct');
-        const corretoAgora = userGuess === correctAnswer;
-
-        if (corretoAgora && !estavaCorreto) score++;
-        else if (!corretoAgora && estavaCorreto) score--;
-
-        console.log(score);
+        const correctAnswer = answers[kanaChar];
 
         if (userGuess === '') {
             input.classList.remove('correct', 'incorrect');
@@ -42,6 +35,9 @@ inputs.forEach(input => {
 
             hiraganaBlock.classList.add('correct');
             hiraganaBlock.classList.remove('incorrect');
+
+            score++;
+            input.disabled = true;
         } 
         else {
             input.classList.add('incorrect');
@@ -50,5 +46,7 @@ inputs.forEach(input => {
             hiraganaBlock.classList.add('incorrect');
             hiraganaBlock.classList.remove('correct');
         }
+        
+        displayScore.innerText = score;
     });
 });

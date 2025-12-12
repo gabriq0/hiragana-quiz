@@ -44,7 +44,13 @@ body {
     flex-direction: column;
     align-items: center;
     color: #2d2627;
+}
 
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .conteiner {
@@ -69,4 +75,15 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     width: 25px;
+}
+
+#score {
+    position: fixed;
+    top: 1.4rem;
+    left: 1.4rem;
+    padding: 0.4rem 0.6rem;
+    background-color: #ffb7b2; 
+    color: #880e4f;            
+    font-weight: bold;
+    border: 2px solid #e57373;
 }
