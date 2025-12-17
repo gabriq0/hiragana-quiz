@@ -53,7 +53,7 @@ main {
     gap: 1rem;
 }
 
-.conteiner {
+.container {
     background: #e2ced1;
     padding: 0.8rem;
     border-radius: 0.8rem;
@@ -81,7 +81,8 @@ main {
 .kana {
     font-size: 1.5rem;
     font-weight: bold;
-    width: 25px;
+    text-align: center;
+    min-width: 30px;
 }
 
 #score {
@@ -95,11 +96,11 @@ main {
     border: 2px solid #e57373;
 }
 
-#main-kana, #dakuten-kana {
+#main-kana, #dakuten-kana, #yoon-kana {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.5rem;
     width: 100%;
 }
 
@@ -118,4 +119,33 @@ main {
     background-color: #f59c9c;
     border-color: #594248;
     transform: scale(1.05);
+}
+
+footer {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    text-align: center;
+    font-family: sans-serif;
+    color: #594248;
+    border-top: 1px solid #d9c4c9;
+    width: 100%;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+footer a {
+    color: #880e4f;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+footer a:hover {
+    color: #594248;
+    text-decoration: underline;
 }

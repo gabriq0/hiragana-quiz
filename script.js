@@ -16,10 +16,19 @@ const dakutenKana = {
     'ざ': 'za', 'じ': 'ji', 'ず': 'zu', 'ぜ': 'ze', 'ぞ': 'zo',
     'だ': 'da', 'ぢ': 'ji', 'づ': 'zu', 'で': 'de', 'ど': 'do',
     'ば': 'ba', 'び': 'bi', 'ぶ': 'bu', 'べ': 'be', 'ぼ': 'bo',
-    'ぱ': 'pa', 'ぴ': 'pi', 'ぷ': 'pu', 'ぺ': 'pe', 'ぽ': 'po',
+    'ぱ': 'pa', 'ぴ': 'pi', 'ぷ': 'pu', 'ぺ': 'pe', 'ぽ': 'po'
 };
 
-const allKana = {...mainKana, ...dakutenKana};
+const yoonKana = {
+    'きゃ': 'kya', 'きゅ': 'kyu', 'きょ': 'kyo', 'ぎゃ': 'gya', 'ぎゅ': 'gyu', 'ぎょ': 'gyo',
+    'しゃ': 'sha', 'しゅ': 'shu', 'しょ': 'sho', 'じゃ': 'ja', 'じゅ': 'ju', 'じょ': 'jo',
+    'ちゃ': 'cha', 'ちゅ': 'chu', 'ちょ': 'cho', 'ぢゃ': 'dya', 'ぢゅ': 'dyu', 'ぢょ': 'dyo',
+    'にゃ': 'nya', 'にゅ': 'nyu', 'にょ': 'nyo', 'ひゃ': 'hya', 'ひゅ': 'hyu', 'ひょ': 'hyo',
+    'びゃ': 'bya', 'びゅ': 'byu', 'びょ': 'byo', 'ぴゃ': 'pya', 'ぴゅ': 'pyu', 'ぴょ': 'pyo',
+    'みゃ': 'mya', 'みゅ': 'myu', 'みょ': 'myo', 'りゃ': 'rya', 'りゅ': 'ryu', 'りょ': 'ryo'
+};
+
+const allKana = {...mainKana, ...dakutenKana, ...yoonKana};
 
 let score = 0;
 
@@ -38,7 +47,7 @@ function answersLogic(event) {
      
     // kana class is input's sibling.
     const kanaDiv = input.previousElementSibling; 
-    const kanaChar = kanaDiv.innerText;
+    const kanaChar = kanaDiv.innerText.trim();
     const hiraganaBlock = input.parentElement;
     const correctAnswer = allKana[kanaChar];
 
@@ -80,23 +89,28 @@ function shuffleKana(containerId) {
 }
 
 document.getElementById('next').addEventListener('click', () => {
-    const mainSection = document.getElementById('main-kana');
-    const dakutenSection = document.getElementById('dakuten-kana');
+    const main = document.getElementById('main-kana');
+    const dakuten = document.getElementById('dakuten-kana');
+    const yoon = document.getElementById('yoon-kana');
+    const next = document.getElementById('next');
 
     // change sections!
-    if(mainSection.style.display === 'none') {
-        mainSection.style.display = 'flex';
-        dakutenSection.style.display = 'none';
-        document.getElementById('next').innerText = 'dakuten'; 
-        shuffleKana('dakuten-kana');  
-    }
-    else {
-        mainSection.style.display = 'none';
-        dakutenSection.style.display = 'flex';
-        document.getElementById('next').innerText = 'main kana';
+    if (main.style.display !== 'none') {
+        main.style.display = 'none';
+        dakuten.style.display = 'flex';
+        next.innerText = 'yoon (拗音)';
+        shuffleKana('dakuten-kana');
+    } else if (dakuten.style.display !== 'none') {
+        dakuten.style.display = 'none';
+        yoon.style.display = 'flex';
+        next.innerText = 'main (基本)';
+        shuffleKana('yoon-kana');
+    } else {
+        yoon.style.display = 'none';
+        main.style.display = 'flex';
+        next.innerText = 'dakuten (濁点)';
         shuffleKana('main-kana');
     }
-    setupQuiz(); //restart the setup
 });
 
 document.getElementById('reset').addEventListener('click', () => {
