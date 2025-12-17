@@ -71,6 +71,13 @@ main {
     border-color: #435663;
 }
 
+.hiragana:focus-within {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transition: 0.2s;
+    border-color: #594248;
+}
+
 .kana {
     font-size: 1.5rem;
     font-weight: bold;
@@ -86,4 +93,29 @@ main {
     color: #880e4f;            
     font-weight: bold;
     border: 2px solid #e57373;
+}
+
+#main-kana, #dakuten-kana {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+#next, #reset {
+    padding: 0.5rem 1rem;
+    background-color: #ffb7b2; 
+    color: #880e4f;            
+    font-weight: bold;
+    border: 2px solid #e57373;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.2s ease;
+}
+
+#next:hover, #reset:hover {
+    background-color: #f59c9c;
+    border-color: #594248;
+    transform: scale(1.05);
 }
